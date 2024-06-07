@@ -30,7 +30,7 @@ while True:
     if face_locations:
         new_encodings = face_recognition.face_encodings(frame, face_locations)
         for new_encoding in new_encodings:
-            if len(face_encodings) < 60:  # Collect up to 300 face encodings
+            if len(face_encodings) < 60:  # Collect up to 60 face encodings
                 face_encodings.append(new_encoding)
                 cv2.putText(frame, f"Collected: {len(face_encodings)}/60", org=(10, 30), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 255, 0), thickness=1)
             else:
@@ -38,7 +38,7 @@ while True:
 
     cv2.imshow("Register", frame)
     k = cv2.waitKey(1)
-    if len(face_encodings) == 60:  # Stop when 300 face encodings are collected
+    if len(face_encodings) == 60:  # Stop when 60 face encodings are collected
         break
 
 video.release()
